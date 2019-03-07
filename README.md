@@ -1,89 +1,38 @@
-# myapp
+# Couchbase lab
 
-My cool app
+Couchbase labor példa projekt
 
-## Get Started
+## Első lépések
 
-Get started developing...
-
-```shell
-# install deps
-npm install
-
-# run in development mode
-npm run dev
-
-# run tests
-npm run test
-```
-
-## Install Dependencies
-
-Install all package dependencies (one time operation)
+Első lépésként telepítsük a [Node.js](https://nodejs.org/en/)-t. Utána telepítsükk a projekt függőségeit:
 
 ```shell
 npm install
 ```
 
-## Run It
-#### Run in *development* mode:
-Runs the application is development mode. Should not be used in production
+
+## Az alkalmazás futtatása fejlesztői módban
+
+A függőségek telepítése után, a dev npm parancs segítségével fejlesztői módban elindul az alkalmazás.
 
 ```shell
 npm run dev
 ```
 
-or debug it
+## Próbakör
 
-```shell
-npm run dev:debug
-```
+Az alkalmazás indítása után nyissuk meg a böngészőnkben az alábbi oldalt: [http://localhost:3000](http://localhost:3000)
+Egy alap üdvözlő üzenet, illetve egy link fogad minket, mely segítségével az alkalmazás REST API
+dokumentációja fog megnyílni.
 
-#### Run in *production* mode:
+## Kód módosítása
 
-Compiles the application and starts it in production production mode.
+Az alkalmazás módosításához csupán Node.js-re illetve egy szövegszerkesztőre lesz szükségünk.
+A dev npm parancs futása után az alkalmazás figyelni fogja a fájlok változását, és amennyiben
+módosul valamelyik fájl, újra fogja fordítani és tölteni automatikusan.
 
-```shell
-npm run compile
-npm start
-```
+A kód módosítására alkalmas a jegyzettömb is, ajánlott fejlesztői környezetek azonban:
+* IntelliJ IDEA(diák licensszel ingyenes)
+* Webstorm(diák licensszel ingyenes)
+* Visual Studio Code(teljesen ingyenes)
 
-## Try It
-* Open you're browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint 
-  ```shell
-  curl http://localhost:3000/api/v1/examples
-  ```
-
-
-## Debug It
-
-#### Debug the server:
-
-```
-npm run dev:debug
-```
-
-#### Debug Tests
-
-```
-npm run test:debug
-```
-
-#### Debug with VSCode
-
-Add these [contents](https://github.com/cdimascio/generator-express-no-stress/blob/next/assets/.vscode/launch.json) to your `.vscode/launch.json` file
-## Lint It
-
-View airbnb linter output
-
-```
-npm run lint
-```
-
-Fix all airbnb linter errors
-
-```
-npm run lint
-```
-   
