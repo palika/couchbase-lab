@@ -1,0 +1,196 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: PTE TTK Couchbase course
+  description: PTE TTK Couchbase practice project
+basePath: /api/v1
+tags:
+  - name: Specification
+    description: The swagger API specification
+  - name: Beer
+    description: Beer related operations
+  - name: Brewery
+    description: Brewery related operations
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /couchbase/breweries:
+    get:
+      tags:
+      - Brewery
+      parameters:
+      - name: skip
+        in: query
+        type: integer
+        required: false
+      - name: limit
+        in: query
+        type: integer
+        required: false
+      responses:
+        200:
+          description: List of breweries
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Brewery'
+  /couchbase/breweries/{id}:
+    get:
+      tags:
+      - Brewery
+      description: Retrieving brewery by document key
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        200:
+          description: Brewery details
+          schema:
+            $ref: '#/components/schemas/Brewery'
+        404:
+          description: In case of the brewery missing
+        500:
+          description: Unexpected server error
+    post:
+      tags:
+      - Brewery
+      description: Create new or modifying an existing brewery
+      parameters:
+      - name: brewery
+        in: body
+        required: true
+        schema:
+          $ref: '#/components/schemas/Brewery'
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        200:
+          description: The updated brewery details
+          schema:
+            $ref: '#/components/schemas/Brewery'
+        500:
+          description: Unexpected server error
+
+  /couchbase/beers:
+    get:
+      tags:
+      - Beer
+      parameters:
+        - name: offset
+          in: query
+          type: integer
+          required: false
+        - name: limit
+          in: query
+          type: integer
+          required: false
+      responses:
+        200:
+          description: List of beers
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Beer'
+  /couchbase/beers/{id}:
+    get:
+      tags:
+      - Beer
+      description: Retrieving beer by document key
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: Beer details
+          schema:
+            $ref: '#/components/schemas/Beer'
+        404:
+          description: In case of the beer missing
+        500:
+          description: Unexpected server error
+    post:
+      tags:
+      - Beer
+      description: Create new or modifying an existing beer
+      parameters:
+        - name: beer
+          in: body
+          required: true
+          schema:
+            $ref: '#/components/schemas/Beer'
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: The updated beer details
+          schema:
+            $ref: '#/components/schemas/Beer'
+        500:
+          description: Unexpected server error
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
+
+components:
+  schemas:
+    Brewery:
+      type: object
+      properties:
+        city:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        country:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        state:
+          type: string
+        address:
+          type: string
+    Beer:
+      type: object
+      properties:
+        brewery_id:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        style:
+          type: string
+        type:
+          type: string
+        updated:
+          type: string
+        upc:
+          type: integer
+        srm:
+          type: integer
+        ibu:
+          type: integer
+        abv:
+          type: integer
